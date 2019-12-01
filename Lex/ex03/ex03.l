@@ -1,4 +1,4 @@
-%option noyywrap
+%option main
 
 %{
 int wordCount = 0;
