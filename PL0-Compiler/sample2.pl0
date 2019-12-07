@@ -1,0 +1,43 @@
+const m=15, n=6;
+var x,y,z,z1,z2;
+procedure lcm;
+       procedure gcd;
+	var f,g;
+	begin  f:=x; g:=y;
+                while f != g do
+	        begin 
+		if f > g then f:=f-g ;
+		if f < g then g:=g-f ;
+	        end;	// f=g is gcd
+	    z1:=f;		// z1 is gcd
+	end; // end GCD
+       begin
+	call gcd;
+	z2:=x*y/z1	// z2 is LCM
+       end; // end lcm
+procedure multiply;
+       var a,b;
+       begin a:=x; b:=y; z:=0;
+	while b>0 do
+	     begin
+		if odd b then z:=z+a;
+		a:=2*a; b:=b/2;
+	     end
+       end;
+
+(* ===== 주석처리 =====
+procedure divide;
+       var w;
+       begin r:=x; q:=0; w:=y;
+	while w<=r do w:=2*w;
+	while w>y do
+	     begin q:=2*q; w:=w/2;
+		if w<=r then begin r:=r-w; q:=q+1 end
+	     end
+       end;
+*)
+begin
+       x:=m; y:=n; call multiply;
+//     x:=m; y:=n; call divide;	
+       x:=m; y:=n; call lcm;
+end.
